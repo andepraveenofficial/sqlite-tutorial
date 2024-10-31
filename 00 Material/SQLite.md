@@ -9,7 +9,7 @@
 - DDL (Data Definition Language)
 - DML (Data Manipulation Language)
 - DQL (Data Query Language)
-- SQL commands
+- CRUD
 - Operators
 - Pagination
 - Aggregations
@@ -90,121 +90,16 @@ CREATE TABLE player(
 - An index is a database object created to improve data retrieval speed from tables.
 - It’s usually applied to columns that are frequently queried.
 
-</details>
-
----
-
-<details>
-<summary>SQL commands</summary>
-
-### SQL commands
-
-**CRUD** operations:
-
-| Operation | Description                                                    |
-| --------- | -------------------------------------------------------------- |
-| Create    | Creating new records or entries in a database or system        |
-| Retrieve  | Fetching or reading data from a database or system             |
-| Update    | Modifying or editing existing data in a database or system     |
-| Delete    | Removing or deleting records or data from a database or system |
-
-| Operation | SQL Syntax                                                                  |
-| --------- | --------------------------------------------------------------------------- |
-| Create    | `INSERT INTO table_name (column1, column2) VALUES (value1, value2);`        |
-| Retrieve  | `SELECT column1, column2 FROM table_name WHERE condition;`                  |
-| Update    | `UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;` |
-| Delete    | `DELETE FROM table_name WHERE condition;`                                   |
-
-#### Inserting ROWS
-
 ```sql
-INSERT INTO
-     player(name, age, score)
-VALUES
-     ("Rakesh", 39, 35),
-     ("Sai", 47, 30);
+CREATE INDEX idx_player_score ON player(score);
 ```
 
-#### Retrieving Data
+- If the player table has millions of rows and you search by score, an index on score helps the database skip irrelevant rows and find results quickly. Without an index, the database would scan each row, which would be slower.
 
-##### Selecting All Columns
+### ALTER
 
-```sql
-SELECT *
-FROM player;
-```
-
-##### Select Specific Column
-
-```sql
-SELECT
-     name,
-     age
-FROM
-     player;
-```
-
-##### Selecting Specific Rows
-
-`WHERE` clause specifies a condition that has to be satisfied for retrieving the data from a database.
-
-```sql
-SELECT *
-FROM player
-WHERE name = "Sai";
-```
-
-#### Update Rows
-
-##### Update All Rows
-
-```sql
-UPDATE
-    player
-SET
-    score = 100;
-```
-
-##### Update Specific Rows
-
-```sql
-UPDATE
-    player
-SET
-   score = 150
-WHERE
-   name = "Ram";
-```
-
-#### Delete Rows
-
-##### Delete All Rows
-
-```sql
-DELETE FROM
-    player;
-```
-
-##### Delete Specific Rows
-
-```sql
-DELETE FROM
-    player
-WHERE
-    name = "Shyam";
-```
-
-##### Drop Table
-
-`DROP` clause is used to delete a table from the database.
-
-```sql
-DROP TABLE player;
-```
-
-##### Alter Table
-
-`Alter` clause is used to **add**, **delete**, or **modify** columns in an existing table. Default values for newly added columns in the existing rows will be **NULL**.
+- `ALTER` clause is used to **add**, **delete**, or **modify** columns in an existing table.
+- Default values for newly added columns in the existing rows will be **NULL**.
 
 ```sql
 ALTER TABLE
@@ -217,6 +112,141 @@ ADD
 ALTER TABLE
     player RENAME COLUMN jersey_num TO jersey_number;
 ```
+
+### DROP
+
+- `DROP` clause is used to delete a table from the database.
+
+```sql
+DROP TABLE player;
+```
+
+</details>
+
+---
+
+<details>
+<summary>DML (Data Manipulation Language)</summary>
+
+## DML (Data Manipulation Language)
+
+- DML stands for Data Manipulation Language
+- DML is used to insert, update, and delete data in database tables.
+- Example : `INSERT`, `UPDATE`, `DELETE`
+  - INSERT: Adds new records to a table.
+  - UPDATE: Modifies existing data in a table.
+  - DELETE: Removes records from a table.
+
+### 1. INSERT
+
+It is used to insert a row into table
+
+```sql
+INSERT INTO
+     player(name, age, score)
+VALUES
+     ("Praveen", 39, 35),
+     ("Sai", 47, 30);
+```
+
+#### 2. UPDATE
+
+Modifying or editing existing data in a database
+
+```sql
+-- Update All Rows
+UPDATE
+    player
+SET
+    score = 100;
+```
+
+```sql
+-- Update Specific Rows
+UPDATE
+    player
+SET
+   score = 150
+WHERE
+   name = "Ram";
+```
+
+#### DELETE
+
+Removing or deleting data from a database
+
+```sql
+-- delete all rows
+DELETE FROM
+    player;
+```
+
+```sql
+-- delete specific rows
+
+DELETE FROM
+    player
+WHERE
+    name = "Praveen";
+```
+
+</details>
+
+---
+
+<details>
+<summary>DQL (Data Query Language)</summary>
+
+## DQL (Data Query Language)
+
+- **DQL** stands for **Data Query Language**
+- DQL is used to retrieve data from the database.
+- DQL is used to query the database and return requested data, often with specific filters, sorting, and grouping.
+- Example : `SELECT`
+  - SELECT: Fetches data from a database table.
+  - Additional Features: - WHERE clause to filter records. - ORDER BY to sort results. - GROUP BY to group results based on a column.
+
+#### SELECT
+
+```sql
+-- Retrieve all columns
+SELECT *
+FROM player;
+```
+
+```sql
+-- Retrieve specific columns
+SELECT
+     name,
+     age
+FROM
+     player;
+```
+
+```sql
+-- Retrieve specific row
+SELECT *
+FROM player
+WHERE name = "Sai";
+```
+
+</details>
+
+---
+
+<details>
+<summary>CRUD</summary>
+
+## CRUD
+
+**CRUD** operations:
+
+| Operation | SQL Syntax                                                                  |
+| --------- | --------------------------------------------------------------------------- |
+| Create    | `INSERT INTO table_name (column1, column2) VALUES (value1, value2);`        |
+| Retrieve  | `SELECT column1, column2 FROM table_name WHERE condition;`                  |
+| Update    | `UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;` |
+| Delete    | `DELETE FROM table_name WHERE condition;`                                   |
 
 </details>
 
@@ -474,7 +504,7 @@ Combining multiple values into a single value is called aggregation.
 | MAX                | Returns the maximum value            |
 | AVG                | Calculates the average of the values |
 
-![Agregation SUM](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430965/portfolio/markdown/sqlite/aggregation_sum.gif)
+![Aggregation SUM](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430965/portfolio/markdown/sqlite/aggregation_sum.gif)
 
 ```sql
 SELECT
