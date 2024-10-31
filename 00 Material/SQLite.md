@@ -44,6 +44,57 @@
 ---
 
 <details>
+<summary>DDL (Data Definition Language)</summary>
+
+## DDL (Data Definition Language)
+
+- **DDL** stands for **Data Definition Language**
+- DDL commands used to define and manage the structure of database objects like tables, indexes, and schemas.
+- DDL commands create, modify, and delete database structures but do not work directly with data
+- Example : `CREATE`, `ALTER`, `DROP`
+  - CREATE: Used to create new database objects, like tables and indexes.
+  - ALTER: Modifies the structure of an existing object, for example, by adding or removing columns in a table.
+  - DROP: Deletes an entire database object, like a table, index, or schema.
+
+### CREATE TABLE
+
+To create a table, the **CREATE TABLE** command is used, which defines columns and their data types.
+
+```sql
+CREATE TABLE player(
+    name VARCHAR(200),
+    age INTEGER,
+    score INTEGER
+);
+```
+
+| Data Type     | Description                                                                    |
+| ------------- | ------------------------------------------------------------------------------ |
+| INTEGER / INT | Represents whole numbers without decimal points.                               |
+| FLOAT         | Represents approximate numeric values with decimal points.                     |
+| VARCHAR       | Stores text data with a maximum length limit specified.                        |
+| TEXT          | Stores large amounts of textual data.                                          |
+| DATE          | Represents a date (year, month, and day).                                      |
+| TIME          | Represents a time of day (hours, minutes, seconds, and fractions of a second). |
+| DATETIME      | Represents a combination of date and time.                                     |
+| BOOLEAN       | Represents true or false values.                                               |
+
+#### Table Information
+
+```sql
+    PRAGMA TABLE_INFO(player);
+```
+
+### CREATE INDEX
+
+- An index is a database object created to improve data retrieval speed from tables.
+- It’s usually applied to columns that are frequently queried.
+
+</details>
+
+---
+
+<details>
 <summary>SQL commands</summary>
 
 ### SQL commands
@@ -63,33 +114,6 @@
 | Retrieve  | `SELECT column1, column2 FROM table_name WHERE condition;`                  |
 | Update    | `UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;` |
 | Delete    | `DELETE FROM table_name WHERE condition;`                                   |
-
-#### Create Table
-
-```sql
-CREATE TABLE player(
-    name VARCHAR(200),
-    age INTEGER,
-    score INTEGER
-);
-```
-
-| Data Type     | Description                                                                    |
-| ------------- | ------------------------------------------------------------------------------ |
-| INTEGER / INT | Represents whole numbers without decimal points.                               |
-| FLOAT         | Represents approximate numeric values with decimal points.                     |
-| VARCHAR       | Variable-length character strings (strings of varying lengths).                |
-| TEXT          | Stores large amounts of textual data.                                          |
-| DATE          | Represents a date (year, month, and day).                                      |
-| TIME          | Represents a time of day (hours, minutes, seconds, and fractions of a second). |
-| DATETIME      | Represents a combination of date and time.                                     |
-| BOOLEAN       | Represents true or false values.                                               |
-
-#### Table Information
-
-```sql
-    PRAGMA TABLE_INFO(player);
-```
 
 #### Inserting ROWS
 
