@@ -204,7 +204,7 @@ WHERE
 - DQL is used to query the database and return requested data, often with specific filters, sorting, and grouping.
 - Example : `SELECT`
   - SELECT: Fetches data from a database table.
-  - Additional Features: - WHERE clause to filter records. - ORDER BY to sort results. - GROUP BY to group results based on a column.
+  - Additional Features: `WHERE clause to filter records`, `ORDER BY to sort results`, `GROUP BY to group results based on a column`.
 
 #### SELECT
 
