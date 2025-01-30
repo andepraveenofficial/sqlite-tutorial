@@ -23,6 +23,8 @@
 - Relational Database
 - JOINS
 - SubQueries
+- Practice
+- Relations
 
 </details>
 
@@ -941,7 +943,7 @@ CREATE TABLE cart(
 );
 ```
 
-### Cart Product Table (Junction Table)
+### Cart-Product Table (Junction Table)
 
 ```sql
 CREATE TABLE cart_product(
@@ -1216,6 +1218,18 @@ WHERE
 -- LIMIT 1
 -- OFFSET 1;
 ```
+
+</details>
+
+---
+
+<details>
+<summary>Relations</summary>
+
+## Relations
+1. one-to-one
+2. one-to-many
+3. many-to-many
 
 </details>
 
