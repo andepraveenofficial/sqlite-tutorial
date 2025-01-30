@@ -1,0 +1,34 @@
+@baseUrl= http://localhost:5000
+
+### Health
+GET {{baseUrl}}/health
+
+### Database Connection Test
+GET {{baseUrl}}/test
+
+### DML ###
+
+### 01 Insert User
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Ande Praveen",
+  "email": "praveenande@example.com",
+  "phone": "0123456789"
+}
+
+
+### Update User by ID
+PUT {{baseUrl}}/users/1
+Content-Type: application/json
+
+{
+  "name": "Updated Ande Praveen",
+  "email": "updatedpraveenande@example.com",
+  "phone": "9876543210"
+}
+
+
+### Soft Delete User by ID
+DELETE {{baseUrl}}/users/1

@@ -35,11 +35,13 @@
 
 ## Introduction to SQL
 
-**SQL** stands for **Structured Query Language**
-
+- **SQL** stands for **Structured Query Language**
+- **DBMS** stands for **Database Management System**
 - SQL is used to perform operations on Relational DBMS.
 - SQL is easy to learn
 - SQL provides multiple commands to perform (CRUD) various operations like `create`, `retrieve`, `update` and `delete` the data.
+- DBMS is software that allows users to create, manage, and manipulate databases efficiently. 
+- DBMS Examples: `MySQL`, `PostgreSQL`, `SQLite`, and `MongoDB`.
 
 </details>
 
