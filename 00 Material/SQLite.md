@@ -25,6 +25,7 @@
 - SubQueries
 - Practice
 - Relations
+- Documentation
 
 </details>
 
@@ -1233,6 +1234,16 @@ WHERE
 2. one-to-many
 3. many-to-many
 
+</details>
+
+---
+
+<details>
+<summary>Documentation</summary>
+
+## Documetation
+
+- Official Documentation : [https://www.sqlite.org/docs.html]
 </details>
 
 ---
