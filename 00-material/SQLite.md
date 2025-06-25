@@ -136,12 +136,12 @@ DROP TABLE player;
 
 ## DML (Data Manipulation Language)
 
-- DML stands for Data Manipulation Language
+- **DML** stands for **Data Manipulation Language**
 - DML is used to insert, update, and delete data in database tables.
 - Example : `INSERT`, `UPDATE`, `DELETE`
-  - INSERT: Adds new records to a table.
-  - UPDATE: Modifies existing data in a table.
-  - DELETE: Removes records from a table.
+  - **INSERT** : adds new rows to a table.
+  - **UPDATE** : modifies existing data in table rows.
+  - **DELETE** : deletes existing rows from a table.
 
 ### 1. INSERT
 
@@ -151,13 +151,13 @@ It is used to insert a row into table
 INSERT INTO
      player(name, age, score)
 VALUES
-     ("Praveen", 39, 35),
-     ("Sai", 47, 30);
+     ("Praveen", 29, 35),
+     ("Sai", 28, 30);
 ```
 
 #### 2. UPDATE
 
-Modifying or editing existing data in a database
+Modifying existing data in a table rows.
 
 ```sql
 -- Update All Rows
@@ -174,12 +174,12 @@ UPDATE
 SET
    score = 150
 WHERE
-   name = "Ram";
+   name = "Praveen";
 ```
 
 #### DELETE
 
-Removing or deleting data from a database
+deleting existing rows data from a table.
 
 ```sql
 -- delete all rows
