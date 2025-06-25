@@ -16,12 +16,10 @@
 - SQL Functions
 - CASE
 - SET Operators
-- Milestone
 - Relational Database
 - JOINS
 - SubQueries
 - Practice
-- Relations
 - Documentation
 
 </details>
@@ -613,7 +611,7 @@ WHERE
 
 ## CASE Clause
 
-SQL provides **CASE** clause to perform conditional operations. This is similar to the switch case / if-else conditions in other programming languages.
+- SQL provides **CASE** clause to perform conditional operations. This is similar to the switch case / if-else conditions in other programming languages.
 
 ```sql
 SELECT id, name,
@@ -685,65 +683,6 @@ ORDER BY 1 DESC;
 ---
 
 <details>
-<summary>Milestone</summary>
-
-## Clauses
-
-| Clause       | How to Use It                            | Functionality                                               |
-| ------------ | ---------------------------------------- | ----------------------------------------------------------- |
-| CREATE TABLE | CREATE TABLE table_name ...              | Creates a new table                                         |
-| INSERT       | INSERT INTO table_name ...               | Used to insert new data into the table                      |
-| SELECT       | SELECT col1, col2 ...                    | Retrieves the selected columns                              |
-| SELECT       | SELECT \* FROM ...                       | Retrieves all the columns from a table                      |
-| FROM         | FROM table_name                          | Specifies the table(s) where the data columns are located   |
-| WHERE        | WHERE col > 5                            | Retrieves specific rows based on given conditions           |
-| UPDATE, SET  | UPDATE table_name SET column1 = value1;  | Updates the value of a column for all rows or specific rows |
-| DELETE       | DELETE FROM table_name                   | Deletes all rows from the table                             |
-| DROP         | DROP TABLE table_name                    | Deletes the table from the database                         |
-| ALTER        | ALTER TABLE table_name ...               | Used to add, delete, or modify columns in a table           |
-| ORDER BY     | ORDER BY col1 ASC/DESC ...               | Sorts the table based on specified column(s)                |
-| DISTINCT     | SELECT DISTINCT col, ...                 | Retrieves unique values from the specified column(s)        |
-| LIMIT        | LIMIT 10                                 | Limits the number of rows in the output to the given value  |
-| OFFSET       | OFFSET 5                                 | Specifies the position (from nth row) for result retrieval  |
-| GROUP BY     | GROUP BY col ...                         | Groups rows with the same values in the specified columns   |
-| HAVING       | HAVING col > 20                          | Filters resultant rows after applying the GROUP BY clause   |
-| CASE         | CASE WHEN condition1 THEN value1 ... END | Returns a corresponding value when a condition is met       |
-
-## Operators
-
-| Operator | How to Use It                         | Functionality                                                                                         |
-| -------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `<>`     | `WHERE col <> 5 `                     | Filters rows where the given column is not equal to 5 (Other comparison operators: `=, >, <, >=, <=`) |
-| `<>`     | `WHERE col <> 5`                      | Filters rows where the given column is not equal to 5 (Other comparison operators: `=, >, <, >=, <=`) |
-| LIKE     | `WHERE col LIKE '%Apple%'`            | Retrieves rows where the column contains 'apple' within the text                                      |
-| AND      | `WHERE col1 > 5 AND col2 < 3`         | Retrieves rows that satisfy all the given conditions                                                  |
-| OR       | `WHERE col1 > 5 OR col2 < 3`          | Retrieves rows that satisfy at least one of the given conditions                                      |
-| NOT      | `WHERE NOT col = 'apple'`             | Retrieves rows if the condition(s) are NOT TRUE                                                       |
-| IN       | `WHERE col IN ('Apple', 'Microsoft')` | Retrieves rows if the column value matches any of the given values                                    |
-| BETWEEN  | `WHERE col BETWEEN 3 AND 5`           | Retrieves rows where the column value falls within the specified range (inclusive)                    |
-
-## Functions
-
-| Function   | How to Use It             | Functionality                                                                                  |
-| ---------- | ------------------------- | ---------------------------------------------------------------------------------------------- |
-| COUNT      | SELECT COUNT(col) ...     | Counts the number of values in the given column                                                |
-| SUM        | SELECT SUM(col) ...       | Adds all the values in the given column                                                        |
-| MIN        | SELECT MIN(col) ...       | Retrieves the minimum value in the given column                                                |
-| MAX        | SELECT MAX(col) ...       | Retrieves the maximum value in the given column                                                |
-| AVG        | SELECT AVG(col) ...       | Calculates the average of the values in the given column                                       |
-| strftime() | strftime("%Y", col) ...   | Extracts the year from the column value in string format (similarly for other date components) |
-| CAST()     | CAST(col AS datatype) ... | Converts the value to the specified data type                                                  |
-| FLOOR()    | FLOOR(col) ...            | Rounds a number to the nearest integer below its current value                                 |
-| CEIL()     | CEIL(col) ...             | Rounds a number to the nearest integer above its current value                                 |
-| ROUND()    | ROUND(col) ...            | Rounds a number to a specified number of decimal places                                        |
-| UPPER()    | UPPER(col) ...            | Converts a string to uppercase                                                                 |
-| LOWER()    | LOWER(col) ...            | Converts a string to lowercase                                                                 |
-
-</details>
-
----
-
-<details>
 <summary>Relational Database</summary>
 
 ## Relational Database
@@ -770,19 +709,6 @@ CREATE TABLE product (
 );
 ```
 
-### Address Table
-
-```sql
-CREATE TABLE address(
-  id INTEGER NOT NULL PRIMARY KEY,
-  pin_code INTEGER,
-  door_no VARCHAR(250),
-  city VARCHAR(250),
-  customer_id INTEGER,
-  FOREIGN KEY (customer_id) REFERENCES customer(id) ON DELETE CASCADE
-);
-```
-
 ### Cart Table
 
 ```sql
@@ -794,7 +720,7 @@ CREATE TABLE cart(
 );
 ```
 
-### Cart-Product Table (Junction Table)
+### cart_product Table (Junction Table)
 
 ```sql
 CREATE TABLE cart_product(
@@ -822,7 +748,7 @@ JOINS are used to combining the tables.
 
 `NATURAL JOIN` combines the tables based on the common columns.
 
-![NATURAL JOIN](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711431052/portfolio/markdown/sqlite/natural_join.gif)
+![NATURAL JOIN](./assets/natural_join.gif)
 
 ```sql
 SELECT course.name,
@@ -836,7 +762,7 @@ WHERE instructor.full_name = "Alex";
 
 `INNER JOIN` combines rows from both the tables if they meet a specified condition.
 
-![INNER JOIN](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711431017/portfolio/markdown/sqlite/inner_join.gif)
+![INNER JOIN](./assets/inner_join.gif)
 
 ```sql
 SELECT student.full_name,
@@ -852,7 +778,7 @@ WHERE review.course_id = 15;
 
 In `LEFT JOIN`, for each row in the left table, matched rows from the right table are combined. If there is no match, NULL values are assigned to the right half of the rows in the temporary table.
 
-![LEFT JOIN](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711431007/portfolio/markdown/sqlite/left_join.gif)
+![LEFT JOIN](./assets/left_join.gif)
 
 ```sql
 SELECT student.full_name
@@ -882,7 +808,7 @@ WHERE course.instructor_id = 102;
 `RIGHT JOIN` or `RIGHT OUTER JOIN` is vice versa of LEFT JOIN.
 I.e., in RIGHT JOIN, for each row in the right table, matched rows from the left table are combined. If there is no match, NULL values are assigned to the left half of the rows in the temporary table.
 
-![RIGHT JOIN](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711431099/portfolio/markdown/sqlite/right_join.gif)
+![RIGHT JOIN](./assets/right_join.gif)
 
 ```sql
 SELECT course.name,
@@ -896,7 +822,7 @@ FROM
 
 `FULL JOIN` or `FULL OUTER JOIN` is the result of both RIGHT JOIN and LEFT JOIN
 
-![FULL JOIN](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430980/portfolio/markdown/sqlite/full-join.gif)
+![FULL JOIN](./assets/full-join.gif)
 
 ```sql
 SELECT course.name,
@@ -911,7 +837,7 @@ FROM
 In `CROSS JOIN`, each row from the first table is combined with all rows in the second table.
 Cross Join is also called as CARTESIAN JOIN
 
-![CROSS JOIN](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430964/portfolio/markdown/sqlite/cross_join.gif)
+![CROSS JOIN](./assets/cross_join.gif)
 
 ```sql
 SELECT
@@ -1069,19 +995,6 @@ WHERE
 -- LIMIT 1
 -- OFFSET 1;
 ```
-
-</details>
-
----
-
-<details>
-<summary>Relations</summary>
-
-## Relations
-
-1. one-to-one
-2. one-to-many
-3. many-to-many
 
 </details>
 
