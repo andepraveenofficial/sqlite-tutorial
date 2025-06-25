@@ -5,7 +5,7 @@
 
 ## Index
 
-- Introduction to SQL
+- Introduction
 - DDL (Data Definition Language)
 - DML (Data Manipulation Language)
 - DQL (Data Query Language)
@@ -32,17 +32,17 @@
 ---
 
 <details>
-<summary>Introduction to SQL</summary>
+<summary>Introduction</summary>
 
-## Introduction to SQL
+## Introduction
 
 - **SQL** stands for **Structured Query Language**
 - **DBMS** stands for **Database Management System**
 - SQL is used to perform operations on Relational DBMS.
-- SQL is easy to learn
-- SQL provides multiple commands to perform (CRUD) various operations like `create`, `retrieve`, `update` and `delete` the data.
-- DBMS is software that allows users to create, manage, and manipulate databases efficiently. 
-- DBMS Examples: `MySQL`, `PostgreSQL`, `SQLite`, and `MongoDB`.
+- Relational Database stores the data in the form of Tables.
+- SQL provides multiple commands to perform various operations like `create`, `read`, `update` and `delete` the data.
+- DBMS is a software that allows users to create, manage, and manipulate databases efficiently.
+- DBMS Examples: `SQLite`, `MySQL`, and `PostgreSQL`
 
 </details>
 
@@ -605,7 +605,7 @@ HAVING
   half_centuries > 1;
 ```
 
-![HAVING](./Assets/having.gif)
+![HAVING](./assets/having.gif)
 
 </details>
 
@@ -1230,6 +1230,7 @@ WHERE
 <summary>Relations</summary>
 
 ## Relations
+
 1. one-to-one
 2. one-to-many
 3. many-to-many
