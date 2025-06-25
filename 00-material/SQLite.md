@@ -54,16 +54,16 @@
 ## DDL (Data Definition Language)
 
 - **DDL** stands for **Data Definition Language**
-- DDL commands used to define and manage the structure of database objects like tables, indexes, and schemas.
-- DDL commands create, modify, and delete database structures but do not work directly with data
+- DDL commands are used to define and manage database tables and table_indexes.
+- DDL commands create, modify, and delete database tables and table_indexes but do not work directly with data
 - Example : `CREATE`, `ALTER`, `DROP`
-  - CREATE: Used to create new database objects, like tables and indexes.
-  - ALTER: Modifies the structure of an existing object, for example, by adding or removing columns in a table.
-  - DROP: Deletes an entire database object, like a table, index, or schema.
+  1. **CREATE** : Used to create tables and indexes.
+  2. **ALTER** : Modifies the structure of an existing table, for example, by adding or removing columns in a table.
+  3. **DROP** : Deletes an entire database table or table_index.
 
-### CREATE TABLE
+### 1. CREATE TABLE
 
-To create a table, the **CREATE TABLE** command is used, which defines columns and their data types.
+The CREATE TABLE command is used to create a table and define the type of data each column will store.
 
 ```sql
 CREATE TABLE player(
@@ -73,38 +73,34 @@ CREATE TABLE player(
 );
 ```
 
-| Data Type     | Description                                                                    |
-| ------------- | ------------------------------------------------------------------------------ |
-| INTEGER / INT | Represents whole numbers without decimal points.                               |
-| FLOAT         | Represents approximate numeric values with decimal points.                     |
-| VARCHAR       | Stores text data with a maximum length limit specified.                        |
-| TEXT          | Stores large amounts of textual data.                                          |
-| DATE          | Represents a date (year, month, and day).                                      |
-| TIME          | Represents a time of day (hours, minutes, seconds, and fractions of a second). |
-| DATETIME      | Represents a combination of date and time.                                     |
-| BOOLEAN       | Represents true or false values.                                               |
+| Data Type | Description                                                                    |
+| --------- | ------------------------------------------------------------------------------ |
+| INTEGER   | Represents whole numbers without decimal points.                               |
+| FLOAT     | Represents approximate numeric values with decimal points.                     |
+| BOOLEAN   | Represents true or false values.                                               |
+| VARCHAR   | Stores text data with a maximum length limit specified.                        |
+| TEXT      | Stores large amounts of textual data.                                          |
+| DATE      | Represents a date (year, month, and day).                                      |
+| TIME      | Represents a time of day (hours, minutes, seconds, and fractions of a second). |
+| DATETIME  | Represents a combination of date and time.                                     |
 
-#### Table Information
+### 2. CREATE INDEX
 
-```sql
-    PRAGMA TABLE_INFO(player);
-```
-
-### CREATE INDEX
-
-- An index is a database object created to improve data retrieval speed from tables.
-- It’s usually applied to columns that are frequently queried.
+- An **index** is used to speed up data reading from a table.
+- It’s usually added to columns that are often searched or filtered.
 
 ```sql
 CREATE INDEX idx_player_score ON player(score);
 ```
 
-- If the player table has millions of rows and you search by score, an index on score helps the database skip irrelevant rows and find results quickly. Without an index, the database would scan each row, which would be slower.
+Example : Contacts App Analogy
 
-### ALTER
+- Without Index: Scrolling through all contacts to find a name.
+- With Index: Tapping the first letter (e.g., “B”) to jump directly to names starting with "B".
 
-- `ALTER` clause is used to **add**, **delete**, or **modify** columns in an existing table.
-- Default values for newly added columns in the existing rows will be **NULL**.
+### 3. ALTER Table
+
+- `ALTER Table` clause is used to **add**, **delete**, or **modify** columns in an existing table.
 
 ```sql
 ALTER TABLE
@@ -116,6 +112,11 @@ ADD
 ```sql
 ALTER TABLE
     player RENAME COLUMN jersey_num TO jersey_number;
+```
+
+```sql
+ALTER TABLE
+    player DROP COLUMN jersey_num;
 ```
 
 ### DROP
