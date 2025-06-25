@@ -93,6 +93,12 @@ Example : Contacts App Analogy
 - Without Index: Scrolling through all contacts to find a name.
 - With Index: Tapping the first letter (e.g., “B”) to jump directly to names starting with "B".
 
+Example : query plan
+
+```sql
+EXPLAIN ANALYZE SELECT * FROM products WHERE id = '34a4473c-52fc-41d5-ab59-c0d5e0035409';
+```
+
 ### 3. ALTER Table
 
 - `ALTER Table` clause is used to **add**, **delete**, or **modify** columns in an existing table.
@@ -303,7 +309,7 @@ OFFSET 3;
 
 ## Filter
 
-- In databases, filtering means showing only the rows that match certain conditions. We usually do this using the WHERE clause in SQL.
+In databases, filtering means showing only the rows that match certain conditions. We usually do this using the **WHERE** clause in SQL.
 
 1. Comparison
 2. String Search
