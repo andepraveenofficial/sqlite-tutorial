@@ -12,7 +12,6 @@
 - Filter
 - Aggregations
 - Alias
-- GROUP BY with HAVING
 - Expressions
 - SQL Functions
 - CASE
@@ -485,7 +484,7 @@ Combining multiple values into a single value is called aggregation.
 | MAX                | Returns the maximum value            |
 | AVG                | Calculates the average of the values |
 
-![Aggregation SUM](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430965/portfolio/markdown/sqlite/aggregation_sum.gif)
+![Aggregation SUM](./assets/aggregation_sum.gif)
 
 ```sql
 SELECT
@@ -526,62 +525,8 @@ Using the keyword `AS`, we can provide alternate temporary names to the columns 
 SELECT
   name AS player_name
 FROM
-  player_match_details;
+  player;
 ```
-
-</details>
-
----
-
-<details>
-<summary>GROUP BY with HAVING</summary>
-
-### GROUP BY with HAVING
-
-#### GROUP BY
-
-The `GROUP BY` clause in SQL is used to group rows which have same values for the mentioned attributes.
-
-```sql
-SELECT
-  name, SUM(score) as total_score
-FROM
-  player_match_details
-GROUP BY name;
-```
-
-![GROUP BY](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430995/portfolio/markdown/sqlite/group_by_having.gif)
-
-```sql
-SELECT
- name, COUNT(*) AS half_centuries
-FROM
- player_match_details
-WHERE score >= 50
-GROUP BY name;
-```
-
-![GROUP BY with HAVING](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711431017/portfolio/markdown/sqlite/having.gif)
-
-#### HAVING
-
-`HAVING` clause is used to filter the resultant rows after the application of `GROUP BY` clause.
-
-```sql
-SELECT
-  name,
-  count(*) AS half_centuries
-FROM
-  player_match_details
-WHERE
-  score >= 50
-GROUP BY
-  name
-HAVING
-  half_centuries > 1;
-```
-
-![HAVING](./assets/having.gif)
 
 </details>
 
