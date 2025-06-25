@@ -9,7 +9,6 @@
 - DDL (Data Definition Language)
 - DML (Data Manipulation Language)
 - DQL (Data Query Language)
-- CRUD
 - Operators
 - Pagination
 - Aggregations
@@ -206,13 +205,13 @@ WHERE
 ## DQL (Data Query Language)
 
 - **DQL** stands for **Data Query Language**
-- DQL is used to retrieve data from the database.
+- DQL is used to read data from the database.
 - DQL is used to query the database and return requested data, often with specific filters, sorting, and grouping.
 - Example : `SELECT`
-  - SELECT: Fetches data from a database table.
-  - Additional Features: `WHERE clause to filter records`, `ORDER BY to sort results`, `GROUP BY to group results based on a column`.
+  - **SELECT** : Fetches data from a database table.
+  - Additional Features: **Filter**, **Order**
 
-#### SELECT
+### SELECT
 
 ```sql
 -- Retrieve all columns
@@ -235,24 +234,6 @@ SELECT *
 FROM player
 WHERE name = "Sai";
 ```
-
-</details>
-
----
-
-<details>
-<summary>CRUD</summary>
-
-## CRUD
-
-**CRUD** operations:
-
-| Operation | SQL Syntax                                                                  |
-| --------- | --------------------------------------------------------------------------- |
-| Create    | `INSERT INTO table_name (column1, column2) VALUES (value1, value2);`        |
-| Retrieve  | `SELECT column1, column2 FROM table_name WHERE condition;`                  |
-| Update    | `UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;` |
-| Delete    | `DELETE FROM table_name WHERE condition;`                                   |
 
 </details>
 
