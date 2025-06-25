@@ -10,7 +10,6 @@
 - DML (Data Manipulation Language)
 - DQL (Data Query Language)
 - Operators
-- Pagination
 - Aggregations
 - Alias
 - GROUP BY with HAVING
@@ -206,7 +205,7 @@ WHERE
 
 - **DQL** stands for **Data Query Language**
 - DQL is used to read data from the database.
-- DQL is used to query the database and return requested data, often with specific filters, sorting, and grouping.
+- DQL is used to query the database and return requested data.
 - Example : `SELECT`
   - **SELECT** : Fetches data from a database table.
   - Additional Features: **Filter**, **Order**
@@ -214,13 +213,13 @@ WHERE
 ### SELECT
 
 ```sql
--- Retrieve all columns
+-- read all columns
 SELECT *
 FROM player;
 ```
 
 ```sql
--- Retrieve specific columns
+-- read specific columns
 SELECT
      name,
      age
@@ -229,10 +228,70 @@ FROM
 ```
 
 ```sql
--- Retrieve specific row
+-- read specific row
 SELECT *
 FROM player
-WHERE name = "Sai";
+WHERE name = "Praveen";
+```
+
+### Filter
+
+#### 1. WHERE
+
+- Ascending order or Descending order.
+
+```sql
+SELECT
+  *
+FROM
+  player
+WHERE
+  name = "Praveen";
+```
+
+#### 2. ORDER BY
+
+- Ascending order or Descending order.
+
+```sql
+SELECT
+  *
+FROM
+  player
+WHERE
+  name = "Praveen"
+ORDER BY
+  score ASC,
+  age DESC;
+```
+
+### Pagination
+
+1. LIMIT
+2. OFFSET
+
+#### 1. LIMIT
+
+**LIMIT** is used to get a specific number of rows from the result.
+
+```sql
+SELECT
+  *
+FROM
+  player
+LIMIT 2;
+```
+
+#### 2. OFFSET
+
+**OFFSET** is used to skip a number of rows before starting to return the results.
+
+```sql
+SELECT
+  *
+FROM
+  player
+OFFSET 3;
 ```
 
 </details>
@@ -389,25 +448,6 @@ WHERE
 
 Note : When using the BETWEEN operator, the first value should be less than second value. If not, we'll get an incorrect result depending on the DBMS.
 
-### ORDER BY
-
-Arrange Ascending order or Descending order.
-`column1 ASC / DESC,`
-
-```sql
-SELECT
-  name,
-  price,
-  rating
-FROM
-  product
-WHERE
-  brand = "Puma"
-ORDER BY
-  price ASC,
-  rating DESC;
-```
-
 ### DISTINCT
 
 `DISTINCT` clause is used to return the distinct i.e unique values.
@@ -419,55 +459,6 @@ FROM
   product
 ORDER BY
   brand;
-```
-
-</details>
-
----
-
-<details>
-<summary>Pagination</summary>
-
-## Pagination
-
-we get limited data only.
-
-- LIMIT
-- OFFSET
-
-### LIMIT
-
-LIMIT clause is used to specify the number of rows(n) we would like to have in result.
-
-```sql
-SELECT
-  name,
-  price,
-  rating
-FROM
-  product
-WHERE
-  brand = "Puma"
-ORDER BY
-  rating DESC
-LIMIT 2;
-```
-
-### OFFSET
-
-OFFSET clause is used to specify the position (from nth row) from where the chunk of the results are to be selected.
-
-```sql
-SELECT
-  name,
-  price,
-  rating
-FROM
-  product
-ORDER BY
-  rating DESC
-LIMIT 5
-OFFSET 5;
 ```
 
 </details>
