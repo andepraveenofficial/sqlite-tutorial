@@ -9,7 +9,7 @@
 - DDL (Data Definition Language)
 - DML (Data Manipulation Language)
 - DQL (Data Query Language)
-- Operators
+- Filter
 - Aggregations
 - Alias
 - GROUP BY with HAVING
@@ -236,6 +236,9 @@ WHERE name = "Praveen";
 
 ### Filter
 
+1. WHERE
+2. ORDER BY
+
 #### 1. WHERE
 
 - Ascending order or Descending order.
@@ -299,9 +302,15 @@ OFFSET 3;
 ---
 
 <details>
-<summary>Operators</summary>
+<summary>Filter</summary>
 
-## Operators
+## Filter
+
+- In databases, filtering means showing only the rows that match certain conditions. We usually do this using the WHERE clause in SQL.
+
+1. Comparison
+2. String Search
+3. Logical
 
 ### Comparison Operators
 
@@ -315,17 +324,17 @@ OFFSET 3;
 ```sql
   SELECT *
   FROM player
-  WHERE age <> 20;
+  WHERE age > 20;
 ```
 
-### String Operations
+### String Search
 
-`LIKE` Operator is used to perform queries on strings. This operator is especially used in `WHERE` clause to retrieve all the rows that match the given pattern.
+- **LIKE** Operator is used to perform queries on strings that match the given pattern.
 
-| Symbol           | Description                        | Example                         |
-| ---------------- | ---------------------------------- | ------------------------------- |
-| Percent sign (%) | Represents zero or more characters | ch%finds ch, chips, chocolate.. |
-| Underscore (\_)  | Represents a single character      | \_atfinds mat, hat, and bat     |
+| Symbol           | Description                        | Example                          |
+| ---------------- | ---------------------------------- | -------------------------------- |
+| Percent sign (%) | Represents zero or more characters | ch% finds ch, chips, chocolate.. |
+| Underscore (\_)  | Represents a single character      | \_at finds mat, hat, and bat     |
 
 | Pattern          | Example                       | Description                                                                           |
 | ---------------- | ----------------------------- | ------------------------------------------------------------------------------------- |
@@ -339,12 +348,10 @@ OFFSET 3;
 SELECT
   *
 FROM
-  product
+  player
 WHERE
-  category LIKE "Gadgets";
+  name LIKE "Praveen";
 ```
-
-Get all the products which have exactly 5 characters in brand from the product table.
 
 ```sql
 SELECT
@@ -352,16 +359,27 @@ SELECT
 FROM
   product
 WHERE
-  brand LIKE "_____";
+  name LIKE "%ve%";
+```
+
+Get all the players which have exactly 5 characters in brand from the player table.
+
+```sql
+SELECT
+  *
+FROM
+  product
+WHERE
+  name LIKE "_____";
 ```
 
 ### Logical Operators
 
-with logical operators, we can perform queries based on multiple conditions.
+- with logical operators, we can combine multiple conditions.
 
-- AND
-- OR
-- NOT
+1. AND
+2. OR
+3. NOT
 
 | Operator | Description                                                           |
 | -------- | --------------------------------------------------------------------- |
@@ -373,33 +391,33 @@ with logical operators, we can perform queries based on multiple conditions.
 SELECT
   *
 FROM
-  product
+  player
 WHERE
-  category = "Clothing"
-  AND price <= 1000;
+  age = 27
+  AND score <= 50;
 ```
 
 ```sql
--- Ignore all the products with name containing "Cake" from the list of products.
+-- Ignore all the players with name containing "%ven%" from the rows of player.
 SELECT
   *
 FROM
-  product
+  player
 WHERE
-  NOT name LIKE "%Cake%";
+  NOT name LIKE "%ven%";
 ```
 
-![Logical Operators](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430996/portfolio/markdown/sqlite/logical-operators.png)
+![Logical Operators](./assets/logical-operators.png)
 
 ```sql
 SELECT
   *
 FROM
-  product
+  player
 WHERE
-  brand = "Redmi"
-  AND rating > 4
-  OR brand = "OnePlus";
+  age = 27
+  AND score > 40
+  OR name LIKE "%ven%";
 ```
 
 Above query is equal to below code
@@ -410,15 +428,29 @@ SELECT
 FROM
     product
 WHERE
-    (brand = "Redmi"
-    AND rating > 4)
-    OR brand = "OnePlus";
+    (age = 27
+  AND score > 40)
+    OR name LIKE "%ven%";
 ```
 
 ### IN operator
 
 Retrieves the corresponding rows from the table if the value of column(c1) is present in the given values(v1,v2,..).
-![IN Operator](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430995/portfolio/markdown/sqlite/in-operator.png)
+![IN Operator](./assets/in-operator.png)
+
+```sql
+SELECT
+  *
+FROM
+  player
+WHERE
+  brand IN ( 25, 26, 27, 30);
+```
+
+### BETWEEN Operator
+
+Retrieves all the rows from table that have cloumn(c1) value present between the given range(v1 and v2).
+![BETWEEN Operator](./assets/between_operator.png)
 
 ```sql
 SELECT
@@ -426,40 +458,11 @@ SELECT
 FROM
   product
 WHERE
-  brand IN ( "Puma", "Levi's", "Mufti", "Lee", "Denim");
-```
-
-### BETWEEN Operator
-
-Retrieves all the rows from table that have cloumn(c1) value present between the given range(v1 and v2).
-![BETWEEN Operator](https://res.cloudinary.com/dwrwbjd3h/image/upload/v1711430955/portfolio/markdown/sqlite/between_operator.png)
-
-```sql
-SELECT
-  name,
-  price,
-  brand
-FROM
-  product
-WHERE
-  price BETWEEN 1000
-  AND 5000;
+  age BETWEEN 20
+  AND 30;
 ```
 
 Note : When using the BETWEEN operator, the first value should be less than second value. If not, we'll get an incorrect result depending on the DBMS.
-
-### DISTINCT
-
-`DISTINCT` clause is used to return the distinct i.e unique values.
-
-```sql
-SELECT
-  DISTINCT brand
-FROM
-  product
-ORDER BY
-  brand;
-```
 
 </details>
 
